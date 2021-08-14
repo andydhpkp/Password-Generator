@@ -45,8 +45,23 @@ function passwordLengthPrompt() {
 
 //Password  character types
 function passwordCharactersPrompt() {
-  
+  var atLeastOne = false
+
+  while(!atLeastOne) {
+    var lowerCase = window.confirm("Should the password include lowercase letters?");
+    var upperCase = window.confirm("Should the password contain uppercase letters?");
+    var numericValue = window.confirm("Should the password contain numeric values?");
+    var specialChar = window.confirm("Should the password contain special characters?");
+    if(lowerCase === false && upperCase === false && numericValue === false && specialChar === false) {
+      window.alert("At least one input must be validated, please try again.");
+      atLeastOne = false;
+    } else {
+      atLeastOne = true;
+    }
+  }
+
 }
+
 
 
 
