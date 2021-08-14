@@ -1,7 +1,5 @@
 // Assignment code here
-var buttonPush = function() {
-  
-}
+var charactersArr = [];
 
 //generator functions
 //random lowercase
@@ -60,9 +58,14 @@ function passwordCharactersPrompt() {
     }
   }
 
+  charactersArr = [lowerCase, upperCase, numericValue, specialChar];
+  return charactersArr; 
 }
 
-
+function generatePassword() {
+  passwordLengthPrompt();
+  passwordCharactersPrompt();
+}
 
 
 // Get references to the #generate element
