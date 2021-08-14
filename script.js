@@ -26,6 +26,28 @@ function getRandomSym() {
   return symbols[randomSym];
 }
 
+//prompt functions
+//Password Length
+function passwordLengthPrompt() {
+  var passwordLength = 0;
+  
+  while (passwordLength < 8 || passwordLength > 128) {
+    var lengthCheck = window.prompt("Choose a length of password between 8 and 128 characters");
+    lengthCheck = parseInt(lengthCheck, 10);
+    if (isNaN(lengthCheck)) {
+      window.alert("Please enter a valid input");
+    } else {
+      passwordLength = lengthCheck;
+    }
+  }
+  return passwordLength;
+}
+
+//Password  character types
+function passwordCharactersPrompt() {
+  
+}
+
 
 
 // Get references to the #generate element
@@ -42,3 +64,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
