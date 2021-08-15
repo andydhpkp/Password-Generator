@@ -35,7 +35,7 @@ function passwordLengthPrompt() {
   while (passwordLength < 8 || passwordLength > 128) {
     var lengthCheck = window.prompt("Choose a length of password between 8 and 128 characters");
     lengthCheck = parseInt(lengthCheck, 10);
-    if (isNaN(lengthCheck)) {
+    if (isNaN(lengthCheck) || lengthCheck < 8 || lengthCheck > 128) {
       window.alert("Please enter a valid input");
     } else {
       passwordLength = lengthCheck;
