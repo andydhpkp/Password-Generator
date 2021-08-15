@@ -1,6 +1,10 @@
 // Assignment code here
 var charactersArr = [];
 
+var passwordLength = 0;
+
+var password = [];
+
 //generator functions
 //random lowercase
 function getRandomLC() {
@@ -19,15 +23,16 @@ function getRandomNum() {
 
 //random special character
 function getRandomSym() {
-  var symbols = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  var symbols = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?",
+   "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\"", "\\"];
   var randomSym = Math.floor(Math.random() * symbols.length);
-  return symbols[randomSym];
+  return symbols[randomSym]; 
 }
 
 //prompt functions
 //Password Length
 function passwordLengthPrompt() {
-  var passwordLength = 0;
+  passwordLength = 0;
   
   while (passwordLength < 8 || passwordLength > 128) {
     var lengthCheck = window.prompt("Choose a length of password between 8 and 128 characters");
@@ -65,6 +70,67 @@ function passwordCharactersPrompt() {
 function generatePassword() {
   passwordLengthPrompt();
   passwordCharactersPrompt();
+  password = [];
+
+  if (charactersArr[0]) {
+    lowerCase = true;
+  } else {
+    lowerCase = false;
+  }
+
+  if (charactersArr[1]) {
+    upperCase = true;
+  } else {
+    upperCase = false;
+  }
+
+  if (charactersArr[2]) {
+    numericValue = true;
+  } else {
+    numericValue = false;
+  }
+
+  if (charactersArr[3]) {
+    specialChar = true;
+  } else {
+    specialChar = false;
+  }
+
+  while (password.length < passwordLength) {
+
+    var randomKey = Math.floor(Math.random() * 4) + 1;
+    
+    switch (randomKey) {
+      case 1:
+        if (lowerCase) {
+          password.push(getRandomLC());
+        } else {
+          break;
+        }
+      case 2:
+        if (upperCase) {
+          password.push(getRandomUC());
+        } else {
+          break;
+        }
+      case 3:
+        if (numericValue) {
+          password.push(getRandomNum());
+        } else {
+          break;
+        }
+      case 4:
+        if (specialChar) {
+          password.push(getRandomSym());
+        } else {
+          break;
+        }
+      default:
+        break;
+    }
+  }
+  password = password.join("");
+  return password;
 }
 
 
