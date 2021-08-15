@@ -3,8 +3,6 @@ var charactersArr = [];
 
 var passwordLength = 0;
 
-var password = [];
-
 //generator functions
 //random lowercase
 function getRandomLC() {
